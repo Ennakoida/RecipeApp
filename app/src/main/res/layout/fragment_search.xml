@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.search.Search">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/view_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- 검색창 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp"
+            android:paddingTop="20dp"
+            android:paddingRight="25dp">
+
+            <ToggleButton
+                android:id="@+id/searchToggle"
+                android:layout_width="55dp"
+                android:layout_height="44dp"
+                android:backgroundTint="@color/cardview_shadow_end_color"
+                android:checked="true"
+                android:textOff="재료"
+                android:textOn="메뉴" />
+
+            <EditText
+                android:id="@+id/searchText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:hint="  메뉴 / 재료명을 선택 후 검색하세요!"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textSize="6.5pt" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/searchFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- 분류 레이어 -->
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/classification_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <!-- 난이도 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="난이도" />
+
+                        <View
+                            android:layout_width="180dp"
+                            android:layout_height="1px"
+                            android:layout_gravity="center"
+                            android:background="#000000" />
+
+                        <GridLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:columnCount="3"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/lv1"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="초보환영"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/lv2"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="보통"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/lv3"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="어려움"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                        </GridLayout>
+
+                    </LinearLayout>
+
+                    <!-- 유형분류 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="유형분류" />
+
+                        <View
+                            android:layout_width="180dp"
+                            android:layout_height="1px"
+                            android:layout_gravity="center"
+                            android:background="#000000" />
+
+                        <GridLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:columnCount="4"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/nation1"
+                                android:layout_width="80dp"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="한식"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/nation2"
+                                android:layout_width="80dp"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="퓨전"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/nation3"
+                                android:layout_width="80dp"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="중국"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/nation4"
+                                android:layout_width="80dp"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="일본"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+                        </GridLayout>
+
+                        <GridLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:columnCount="3"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/nation5"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="이탈리아"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/nation6"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="서양"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/nation7"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="동남아시아"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+
+                        </GridLayout>
+
+                    </LinearLayout>
+
+                    <!-- 음식분류 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="음식분류" />
+
+                        <View
+                            android:layout_width="180dp"
+                            android:layout_height="1px"
+                            android:layout_gravity="center"
+                            android:background="#000000" />
+
+                        <GridLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:columnCount="3"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/ty1"
+                                android:layout_width="52dp"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="국"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/ty2"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="그라탕/리조또"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/ty3"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="나물/생채/샐러드"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+                        </GridLayout>
+
+                        <GridLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:columnCount="3"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/ty4"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="도시락/간식"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/ty5"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="떡/한과"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/ty6"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="만두/면류"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+                        </GridLayout>
+
+                        <GridLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:columnCount="4"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/ty7"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="밑반찬/김치"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/ty8"
+                                android:layout_width="52dp"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="밥"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/ty9"
+                                android:layout_width="68dp"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="볶음"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/ty10"
+                                android:layout_width="68dp"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="부침"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+                        </GridLayout>
+
+                        <GridLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:columnCount="3"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/ty11"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="빵/과자"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/ty12"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="샌드위치/햄버거"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/ty13"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="양념장"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+                        </GridLayout>
+
+                        <GridLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:columnCount="4"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/ty14"
+                                android:layout_width="68dp"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="음료"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/ty15"
+                                android:layout_width="68dp"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="조림"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/ty16"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="찌개/전골/스튜"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+
+                            <Button
+                                android:id="@+id/ty17"
+                                android:layout_width="52dp"
+                                android:layout_height="32dp"
+                                android:layout_margin="5dp"
+                                android:background="@drawable/classification_button"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="3dp"
+                                android:paddingRight="20dp"
+                                android:paddingBottom="3dp"
+                                android:text="찜"
+                                android:textColor="@color/searchTextColor"
+                                android:textSize="6pt" />
+                        </GridLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+
+            <!-- 로딩중 -->
+            <LinearLayout
+                android:id="@+id/searchLoading_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="60dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:visibility="invisible">
+
+                <ProgressBar
+                    android:layout_width="65dp"
+                    android:layout_height="40dp"
+                    android:indeterminateTint="@color/colorPrimaryDark"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="검색 중입니다." />
+
+
+            </LinearLayout>
+
+            <!-- 검색 목록 레이어 -->
+            <LinearLayout
+                android:id="@+id/searchlist_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="60dp"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:visibility="invisible">
+
+                <ListView
+                    android:id="@+id/searchlist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/progressbar"/>
+
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

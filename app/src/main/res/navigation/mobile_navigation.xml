@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_search">
+
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="kr.ac.hs.recipe.ui.search.Search"
+        android:label="@string/title_search"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/navigation_keep"
+        android:name="kr.ac.hs.recipe.fragment.KeepListFragment"
+        android:label="@string/title_keepList"
+        tools:layout="@layout/fragment_keep_list" />
+
+    <fragment
+        android:id="@+id/navigation_myInfo"
+        android:name="kr.ac.hs.recipe.fragment.UserInfoFragment"
+        android:label="@string/title_myInfo"
+        tools:layout="@layout/fragment_user_info" />
+
+</navigation>
